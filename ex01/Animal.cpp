@@ -6,6 +6,12 @@ Animal::Animal()
 	type = "default type";
 }
 
+Animal::Animal(Animal &obj)
+{
+	std::cout << "animal copy constructor has been called" << std::endl;
+	*this = obj;
+}
+
 Animal::~Animal()
 {
 	std::cout << "animal destructor has been called" << std::endl;
@@ -19,4 +25,10 @@ std::string	Animal::getType()
 void Animal::makeSound()
 {
 	std::cout << "default sound" << std::endl;
+}
+
+Animal &Animal::operator=(Animal &obj)
+{
+	this->type = obj.type;
+	return *this;
 }

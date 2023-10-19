@@ -1,11 +1,13 @@
 Name = animals
 SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp
+CC = c++
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 OBJ = $(SRC:.cpp=.o)
 
 all     : $(Name)
 
 $(Name) : $(OBJ)
-	c++ -Wall -Wextra -Werror $(OBJ) -o $(Name)
+	$(CC) $(CPPFLAGS) $(OBJ) -o $(Name)
 
 clean : 
 	@rm -rf $(OBJ)

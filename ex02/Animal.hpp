@@ -7,8 +7,8 @@ class Animal
 {
 	protected :
 		std::string type;
+
 	public :
-		// virtual void pure_virtual() = 0;
 		Animal();
 		virtual ~Animal();
 		virtual std::string	getType() = 0;

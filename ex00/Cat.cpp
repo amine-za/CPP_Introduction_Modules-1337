@@ -4,24 +4,31 @@ Cat::Cat()
 {
 	std::cout << "Cat default constructor has been called" << std::endl;
 	type = "Cat";
-	// test = "non default";
+}
+
+Cat::Cat(Cat &obj)
+{
+	std::cout << "Cat copy constructor has been called" << std::endl;
+	*this = obj;
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat destructor has been called" << std::endl;
 }
- void	Cat::makeSound()
+
+void	Cat::makeSound() const
 {
 	std::cout << "meows" << std::endl;
 }
 
-std::string	Cat::getType()
+ std::string	Cat::getType() const
 {
 	return (type);
 }
 
-void	Cat::testing_getter()
+Cat &Cat::operator=(Cat &obj)
 {
-	std::cout << test << std::endl;
+	(void)obj;
+	return *this;
 }

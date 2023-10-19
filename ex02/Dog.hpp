@@ -8,11 +8,15 @@ class Dog : public Animal
 {
 	private:
 		Brain *brain;
+
 	public :
 		Dog();
+		Dog(Dog &obj);
 		~Dog();
 		std::string	getType();
 		void	makeSound();
+
+		Dog &operator=(Dog &obj);
 };
 
 #endif

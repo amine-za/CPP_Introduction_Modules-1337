@@ -8,12 +8,12 @@ class Cure : public AMateria
 {
     public :
         Cure();
-        // Cure( const Cure & obj );
+        Cure( const Cure & obj );
         ~Cure();   
         Cure* clone() const;
         void    use(ICharacter& target);
 
-        // Cure &operator=(Cure const &obj);
+        Cure &operator=(Cure const &obj);
 };
 
 #endif

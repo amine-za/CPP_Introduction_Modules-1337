@@ -4,7 +4,6 @@
 
 Character::Character()
 {
-    std::cout << "Character default Constructor has been called" << std::endl;
     Name = "default";
     for(int x = 0; x < 4; x++)
         array[x] = NULL;
@@ -13,7 +12,6 @@ Character::Character()
 
 Character::Character(std::string name)
 {
-    std::cout << "Character name taking Constructor has been called" << std::endl;
     Name = name;
     for(int x = 0; x < 4; x++)
         array[x] = NULL;
@@ -22,8 +20,6 @@ Character::Character(std::string name)
 
 Character::Character(const Character & obj)
 {
-    std::cout << "Character copy Constructor has been called" << std::endl;
-    // *this = obj;
     if (this != &obj)
     {
         this->Name = obj.Name;
@@ -37,7 +33,6 @@ Character::Character(const Character & obj)
 
 Character::~Character()
 {
-    std::cout << "Character Destructor has been called" << std::endl;
     for(int x = 0; array[x]; x++)
         delete array[x];
 }
@@ -51,7 +46,6 @@ void    add_to_buffer(AMateria **buffer, AMateria *m)
     for(int x = 0; x < i; x++)
         new_buffer[x] = buffer[x];
     new_buffer[i] = m;
-    // delete(buffer);
     buffer = new_buffer;
     i++;
 }
@@ -64,19 +58,22 @@ void    Character::equip(AMateria *m)
         indx++;
     if (indx < 4)
         array[indx] = m->clone();
-    // delete m;
-    // std::cout << "i survived\n";
+    delete m;
 }
 
 void    Character::unequip(int i)
 {
-    add_to_buffer(buffer, array[i]);
-    array[i] = NULL;
+    if (i >= 0 && i <= 3)
+    {
+        add_to_buffer(buffer, array[i]);
+        delete array[i];
+        array[i] = NULL;
+    }
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx < 4 && idx >= 0 && array[idx])
+    if (idx <= 3 && idx >= 0 && array[idx])
         array[idx]->use(target);
 }
 
@@ -91,10 +88,15 @@ Character &Character::operator=(Character const &obj)
     {
         this->Name = obj.Name;
         for(int x = 0; obj.array[x]; x++)
+        {
+            delete this->array[x];
             this->array[x] = obj.array[x]->clone();
-
+        }
         for(int x = 0; obj.buffer[x]; x++)
+        {
+            delete this->buffer[x];
             this->buffer[x] = obj.buffer[x]->clone();
+        }
     }
     return *this;
 }

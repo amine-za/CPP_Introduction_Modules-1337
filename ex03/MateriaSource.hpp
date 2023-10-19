@@ -6,15 +6,15 @@
 class MateriaSource : public IMateriaSource
 {
     private:
-        AMateria  *store[4];
+        AMateria    *store[4];
     public:
         MateriaSource();
-        // MateriaSource(const MateriaSource& obj);
+        MateriaSource(const MateriaSource& obj);
         ~MateriaSource();
         void        learnMateria(AMateria* p);
         AMateria    *createMateria(std::string const &p);
 
-        // MateriaSource &operator=(MateriaSource const &obj);
+        MateriaSource &operator=(MateriaSource const &obj);
 };
 
 #endif

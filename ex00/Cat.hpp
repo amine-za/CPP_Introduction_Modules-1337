@@ -7,10 +7,12 @@ class Cat : public Animal
 {
 	public :
 		Cat();
+		Cat(Cat &obj);
 		~Cat();
-		std::string	getType();
-		void	makeSound();
-		void	testing_getter();
+		std::string	getType() const;
+		void makeSound() const;
+
+		Cat &operator=(Cat &obj);
 };
 
 #endif
