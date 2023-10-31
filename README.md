@@ -43,12 +43,12 @@ Each module includes exercises, code examples, or learning materials relevant to
 
     Explore the contents, review the code examples, and complete the exercises.
 
-Contributing
+## Contributing
 
 Contributions to improve, expand, or fix issues within these modules are welcome. Feel free to fork this repository, make changes, and create pull requests.
 
 If you encounter any issues or have suggestions, please open an issue.
 
-Credits
+## Credits
 
 This repository is part of the C++ Introduction project of 42 School.
